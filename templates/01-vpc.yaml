@@ -1,8 +1,9 @@
-AWSTemplateFormatVersion : '2025-09-19'
+AWSTemplateFormatVersion: '2010-09-09'
 Description : 'WordPress 3 Tier Architecture '
 
 Resources :  # 리소스정의
-  my-sesac-vpc:   # 리소스이름
+
+  MySesacVPC:   # 리소스이름
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.10.0.0/16
@@ -12,5 +13,30 @@ Resources :  # 리소스정의
         - Key: Name
           Value: my-sesac-vpc
 
+  MySesacIgw:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: my-sesac-igw
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref MySesacIgw 
+      VpcId: !Ref MySesacVPC
+
+
+  # Public Subnet 1 (ALB용)
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: wordpress-public-subnet-1
 
 Outputs:  # 다른 스택에서 사용할 값들
