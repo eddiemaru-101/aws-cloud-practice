@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion : '2025-09-19'
+Description : 'WordPress 3 Tier Architecture '
+
+Resources :  # 리소스정의
+  my-sesac-vpc:   # 리소스이름
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.10.0.0/16
+      EnableDnsHostnames: true   #EC2에 자동으로 도메인 이름 부여
+      EnableDnsSupport: true  #IP 주소 대신 도메인 이름으로 통신 가능
+      Tags:
+        - Key: Name
+          Value: my-sesac-vpc
+
+
+Outputs:  # 다른 스택에서 사용할 값들
