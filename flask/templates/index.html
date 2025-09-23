@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>AWS Cloud Practice</h1>
+    <h2>Flask 로그인 시스템</h2>
+    <p>MariaDB 연동 사용자 인증 시스템입니다</p>
+
+    <nav style="margin: 20px 0;">
+        <a href="/login" style="margin-right: 15px; padding: 10px; background: #007bff; color: white; text-decoration: none;">로그인</a>
+        <a href="/user" style="margin-right: 15px; padding: 10px; background: #28a745; color: white; text-decoration: none;">회원가입</a>
+        <a href="/admin" style="padding: 10px; background: #ffc107; color: black; text-decoration: none;">관리자</a>
+    </nav>
+    <p>오늘의 방문 횟수: {{count}}번</p>
+
+    <h3>로그인</h3>
+    <form action='/user' method="POST">
+        <label for="id">사용자 ID</label>
+        <input type="text" id="id" name="id" required>
+        <label for="pw">패스워드</label>
+        <input type="password" name="pw" required>
+        <button type="submit">로그인</button>
+    </form>
+    <p>이곳은 내용을 적어보자</p>
+    <p>이곳은 내용을 적어보자</p>
+    <p>이곳은 내용을 적어보자</p>
+    <p>이곳은 내용을 적어보자</p>
+    <p>이곳은 내용을 적어보자</p>
+    <p>이곳은 내용을 적어보자</p>
+    <p>이곳은 내용을 적어보자</p>
+</body>
+</html>
