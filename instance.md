@@ -16,3 +16,15 @@ aws ec2 run-instances \
   --security-group-ids sg-0123abcd4567efgh \
   --subnet-id subnet-0abc123de456fghij \
   --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyNewInstance}]'
+
+
+
+aws ec2 run-instances \
+    --image-id <AMI_ID> \
+    --count 1 \
+    --instance-type <INSTANCE_TYPE> \
+    --key-name <KEY_PAIR_NAME> \
+    --security-group-ids <SG_ID> \
+    --subnet-id <SUBNET_ID> \
+    --user-data file://<SCRIPT_FILE_PATH> \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=<INSTANCE_NAME>}]'
