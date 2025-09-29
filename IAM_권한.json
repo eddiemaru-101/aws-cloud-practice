@@ -1,0 +1,35 @@
+{
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Sid": "AllowUserManageOwnMFA",
+         "Effect": "Allow",
+         "Action": [
+            "iam:ListMFADevices",
+            "iam:ListVirtualMFADevices",
+            "iam:EnableMFADevice",
+            "iam:CreateVirtualMFADevice",
+            "iam:DeactivateMFADevice",
+            "iam:ResyncMFADevice",
+            "iam:DeleteVirtualMFADevice",
+            "iam:GetMFADevice",
+            "iam:ChangePassword"
+         ],
+         "Resource": "arn:aws:iam::*:user/${aws:username}"
+      },
+      {
+          "Sid": "EnforceMFAForOtherActions",
+          "Effect": "Deny",
+          "Action": "*",
+          "Resource": "*",
+          "Condition": {
+              "BoolIfExists": {
+                  "aws:MultiFactorAuthPresent" : "false"
+              }
+          }
+         }
+      ]
+}
+
+
+
